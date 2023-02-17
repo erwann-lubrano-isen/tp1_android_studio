@@ -34,7 +34,7 @@ class DetailActivity : AppCompatActivity() {
                 binding.imagePager.visibility = View.VISIBLE
             }
 
-            count = Order.getPlatesCount(plate)?:0
+            count = Order.getPlatesCount(plate)
             update(plate)
 
             binding.increaseQuantityButton.setOnClickListener {

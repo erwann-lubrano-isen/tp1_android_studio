@@ -6,23 +6,23 @@ import com.example.myapplication.Network.MenuModel
 import com.example.myapplication.Network.Plate
 import com.google.gson.Gson
 import java.io.File
+import kotlin.math.roundToInt
 
 class Order {
     companion object{
-        var orders : MutableMap<String,Int> = mutableMapOf()
+        var orders : MutableMap<String,Double> = mutableMapOf()
 
 
         public fun deletePlate(plate: Plate){
             orders.remove(plate.id)
         }
         public fun getPlatesCount(plate: Plate) : Int {
-            if(orders.containsKey(plate.id)) return orders[plate.id]?:0
-            else return 0
+            return (orders[plate.id]?:0.0).roundToInt()
         }
 
         public fun setPlateCount(plate: Plate, count : Int){
             if(count > 0){
-                orders[plate.id] = count
+                orders[plate.id] = count.toDouble()
             }else if (getPlatesCount(plate) > 0){
                 orders.remove(plate.id)
             }
@@ -31,10 +31,10 @@ class Order {
         public fun getListPlate() : List<Pair<Plate, Int>> {
             val list : MutableList<Pair<Plate, Int>> = mutableListOf()
             if(MenuModel.isLoaded()){
-                orders.forEach { (plateId: String, count: Int) ->
+                orders.forEach { (plateId: String, count: Double) ->
                     val plate = MenuModel.getPlate(plateId)
                     if (plate != null) {
-                        list.add(Pair(plate,count))
+                        list.add(Pair(plate,count.roundToInt()))
                     }
                 }
             }
@@ -76,7 +76,7 @@ class Order {
                         orders = (gson.fromJson<Map<*, *>>(
                             json,
                             MutableMap::class.java
-                        )?: mutableMapOf<String,Int>()) as MutableMap<String, Int>
+                        )?: mutableMapOf<String,Double>()) as MutableMap<String, Double>
                     }catch (e : Exception){
 
                     }
