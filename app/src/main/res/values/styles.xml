@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="bouton_menu">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">16pt</item>
+    </style>
+
+    <style name="liste_bouffe">
+        <item name="backgroundTint">@color/white</item>
+        <item name="android:textColor">@color/orange</item>
+        <item name="android:textSize">10pt</item>
+        <item name="counterOverflowTextAppearance">@style/TextAppearance.AppCompat.Small</item>
+    </style>
+
+    <style name="quantity_button">
+        <item name="android:textSize">14pt</item>
+        <item name="backgroundTint">@color/orange</item>
+        <item name="android:includeFontPadding">false</item>
+        <item name="android:textAlignment">center</item>
+        <item name="android:gravity">fill_vertical</item>
+    </style>
+</resources>
